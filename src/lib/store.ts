@@ -167,6 +167,9 @@ export const actions = {
   addSale(sale: Omit<Sale, "id">) {
     update((s) => ({ ...s, sales: [...s.sales, { ...sale, id: uid() }] }));
   },
+  updateSale(id: string, patch: { qty?: number; saleRate?: number }) {
+    update((s) => ({ ...s, sales: s.sales.map((x) => (x.id === id ? { ...x, ...patch } : x)) }));
+  },
   deleteSale(id: string) {
     update((s) => ({ ...s, sales: s.sales.filter((x) => x.id !== id) }));
   },

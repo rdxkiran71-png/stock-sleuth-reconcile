@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { Trash2 } from "lucide-react";
+import { Pencil, Trash2 } from "lucide-react";
 import { actions } from "@/lib/store";
 import { fmtNum, groupLinesByItem, itemCode, type ComputerEntry, type StockItem } from "@/lib/stock";
 
@@ -91,7 +91,21 @@ export function EntryLines({
                     <td className="num px-2 py-1.5 text-right text-xs text-muted-foreground">
                       {new Date(e.at).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })}
                     </td>
-                    <td className="px-1 py-1.5">
+                    <td className="flex gap-0.5 px-1 py-1.5">
+                      <button
+                        type="button"
+                        title="Edit qty"
+                        onClick={() => {
+                          const v = prompt(`"${item?.description ?? ""}" ki nayi qty likhein:`, String(e.qty));
+                          if (v === null) return;
+                          const n = Number(v);
+                          if (Number.isInteger(n) && n >= 0) actions.updateEntry(e.id, n);
+                          else alert("Qty 0 ya us se zyada poora number honi chahiye.");
+                        }}
+                        className="rounded p-1 text-muted-foreground hover:bg-accent hover:text-foreground"
+                      >
+                        <Pencil className="size-3.5" />
+                      </button>
                       <button
                         type="button"
                         title="Delete line"

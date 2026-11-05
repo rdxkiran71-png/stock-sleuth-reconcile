@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
-import { Check, ChevronsUpDown, Plus, Trash2 } from "lucide-react";
+import { Check, ChevronsUpDown, Pencil, Plus, Trash2 } from "lucide-react";
 import { AppShell, StatCard } from "@/components/AppShell";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -170,7 +170,28 @@ function SalesPage() {
                           <td className="num px-3 py-2 text-right">{fmtNum(x.saleRate)}</td>
                           <td className="num px-3 py-2 text-right font-semibold">{fmtNum(x.qty * x.saleRate)}</td>
                           <td className="px-3 py-2 text-xs text-muted-foreground">{x.note ?? ""}</td>
-                          <td className="px-2 py-2">
+                          <td className="flex gap-0.5 px-2 py-2">
+                            <button
+                              type="button"
+                              title="Edit"
+                              className="rounded p-1 text-muted-foreground hover:bg-accent hover:text-foreground"
+                              onClick={() => {
+                                const name = byId.get(x.itemId)?.description ?? "";
+                                const q = prompt(`"${name}" ki nayi qty:`, String(x.qty));
+                                if (q === null) return;
+                                const r = prompt(`"${name}" ka sale rate:`, String(x.saleRate));
+                                if (r === null) return;
+                                const qn = Number(q), rn = Number(r);
+                                if (!(Number.isInteger(qn) && qn > 0 && Number.isFinite(rn) && rn >= 0)) {
+                                  toast.error("Qty 0 se zyada aur rate 0 ya zyada hona chahiye.");
+                                  return;
+                                }
+                                actions.updateSale(x.id, { qty: qn, saleRate: rn });
+                                toast.success("Sale updated");
+                              }}
+                            >
+                              <Pencil className="size-4" />
+                            </button>
                             <button
                               type="button"
                               title="Delete"
