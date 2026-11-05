@@ -5,20 +5,15 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Design system definition.
- *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ * Design system: "Audit Ledger" — warm paper, deep ledger green ink,
+ * amber highlights, clear red/green for shortage/excess.
  */
 
 @theme inline {
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font-display: "Fraunces", Georgia, serif;
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -46,6 +41,19 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-ring-offset-background: var(--background);
+
+  --color-short: var(--short);
+  --color-short-soft: var(--short-soft);
+  --color-excess: var(--excess);
+  --color-excess-soft: var(--excess-soft);
+  --color-pending: var(--pending);
+  --color-pending-soft: var(--pending-soft);
+  --color-matched: var(--matched);
+  --color-matched-soft: var(--matched-soft);
+  --color-ink: var(--ink);
+  --color-ink-foreground: var(--ink-foreground);
+  --color-paper: var(--paper);
+
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -62,74 +70,55 @@
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
-}
+  --radius: 0.5rem;
+  --background: oklch(0.972 0.01 85);
+  --foreground: oklch(0.23 0.03 165);
+  --paper: oklch(0.995 0.004 85);
+  --card: oklch(0.995 0.004 85);
+  --card-foreground: oklch(0.23 0.03 165);
+  --popover: oklch(0.995 0.004 85);
+  --popover-foreground: oklch(0.23 0.03 165);
+  --primary: oklch(0.36 0.07 165);
+  --primary-foreground: oklch(0.98 0.01 85);
+  --secondary: oklch(0.93 0.02 85);
+  --secondary-foreground: oklch(0.28 0.04 165);
+  --muted: oklch(0.94 0.012 85);
+  --muted-foreground: oklch(0.5 0.025 165);
+  --accent: oklch(0.86 0.12 80);
+  --accent-foreground: oklch(0.28 0.05 60);
+  --destructive: oklch(0.55 0.2 27);
+  --destructive-foreground: oklch(0.98 0.01 85);
+  --border: oklch(0.88 0.018 85);
+  --input: oklch(0.85 0.02 85);
+  --ring: oklch(0.55 0.09 165);
 
-.dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  --ink: oklch(0.24 0.04 165);
+  --ink-foreground: oklch(0.96 0.015 85);
+
+  --short: oklch(0.52 0.19 27);
+  --short-soft: oklch(0.95 0.035 27);
+  --excess: oklch(0.5 0.13 150);
+  --excess-soft: oklch(0.95 0.04 150);
+  --pending: oklch(0.6 0.13 70);
+  --pending-soft: oklch(0.96 0.045 85);
+  --matched: oklch(0.45 0.04 220);
+  --matched-soft: oklch(0.95 0.012 220);
+
+  --chart-1: oklch(0.52 0.19 27);
+  --chart-2: oklch(0.5 0.13 150);
+  --chart-3: oklch(0.36 0.07 165);
+  --chart-4: oklch(0.8 0.14 80);
+  --chart-5: oklch(0.6 0.05 220);
+  --sidebar: oklch(0.995 0.004 85);
+  --sidebar-foreground: oklch(0.23 0.03 165);
+  --sidebar-primary: oklch(0.36 0.07 165);
+  --sidebar-primary-foreground: oklch(0.98 0.01 85);
+  --sidebar-accent: oklch(0.93 0.02 85);
+  --sidebar-accent-foreground: oklch(0.28 0.04 165);
+  --sidebar-border: oklch(0.88 0.018 85);
+  --sidebar-ring: oklch(0.55 0.09 165);
+
+  --shadow-card: 0 1px 0 oklch(0.88 0.018 85), 0 8px 24px -16px oklch(0.24 0.04 165 / 0.25);
 }
 
 @layer base {
@@ -140,5 +129,124 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+}
+
+@utility num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+@utility shadow-card {
+  box-shadow: var(--shadow-card);
+}
+
+@utility ledger-rule {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 27px,
+    var(--border) 27px,
+    var(--border) 28px
+  );
+}
+
+/* ---------- A4 print report ---------- */
+.a4-sheet {
+  width: 210mm;
+  min-height: 297mm;
+  padding: 12mm 12mm 14mm;
+  margin: 0 auto;
+  background: var(--paper);
+  color: var(--foreground);
+  box-shadow: var(--shadow-card);
+  font-size: 9.5pt;
+}
+
+.report-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 8.5pt;
+}
+.report-table th,
+.report-table td {
+  border: 0.5pt solid var(--input);
+  padding: 2.5pt 4pt;
+  vertical-align: top;
+}
+.report-table thead th {
+  background: var(--secondary);
+  font-weight: 600;
+  text-align: left;
+  text-transform: uppercase;
+  font-size: 7.5pt;
+  letter-spacing: 0.04em;
+}
+.report-table thead {
+  display: table-header-group;
+}
+.report-table tr {
+  break-inside: avoid;
+}
+.report-table tfoot td {
+  font-weight: 700;
+  background: var(--muted);
+}
+.report-section {
+  break-inside: auto;
+}
+.report-section h2 {
+  break-after: avoid;
+}
+
+@page {
+  size: A4;
+  margin: 10mm 10mm 12mm;
+  @bottom-right {
+    content: "Page " counter(page) " of " counter(pages);
+    font-size: 8pt;
+    color: #666;
+  }
+}
+
+@media print {
+  html,
+  body {
+    background: var(--paper) !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .a4-sheet {
+    width: auto;
+    min-height: 0;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+  }
+  .print-break {
+    break-before: page;
+  }
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 }

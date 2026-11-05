@@ -28,3 +28,8 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+- Stock audit data (items, computer qty, sales, report meta) is stored in browser localStorage via `src/lib/store.ts` with JSON backup/restore; no backend, because it is a single-user, single-device tool.
+- All reconciliation math lives in `src/lib/stock.ts` (pure functions, covered by `src/lib/stock.test.ts`); pages must not re-implement it.
+- The seed item list is `src/data/westpoint-items.json`; "Reset" restores it.

@@ -1,0 +1,1797 @@
+[
+{
+"description": "04 CHOPPER",
+"inHand": 27,
+"rate": 1800
+},
+{
+"description": "05 PATATO CUTER",
+"inHand": 11,
+"rate": 1940
+},
+{
+"description": "07 MULTI WONDER",
+"inHand": 7,
+"rate": 2515
+},
+{
+"description": "09 HANDY CHOPPER",
+"inHand": 14,
+"rate": 2850
+},
+{
+"description": "10 PATATO & VEGATABLE CUTER",
+"inHand": 21,
+"rate": 1950
+},
+{
+"description": "102 DRUM TYP",
+"inHand": 0,
+"rate": 22700
+},
+{
+"description": "103 DRUM TYP",
+"inHand": 0,
+"rate": 23600
+},
+{
+"description": "104 DRUM TYP",
+"inHand": 0,
+"rate": 24600
+},
+{
+"description": "1045 MEAT MINDER",
+"inHand": 6,
+"rate": 19700
+},
+{
+"description": "1090 MEAT MINDER",
+"inHand": 7,
+"rate": 10200
+},
+{
+"description": "1097 MEAT MINDER & VEG CUTER",
+"inHand": 0,
+"rate": 9500
+},
+{
+"description": "1098 MEAT MINDER & VEG CUTER",
+"inHand": 3,
+"rate": 10500
+},
+{
+"description": "1099 MEAT MINDER",
+"inHand": 10,
+"rate": 11450
+},
+{
+"description": "11 HANDY JUICER",
+"inHand": 19,
+"rate": 1720
+},
+{
+"description": "1108 KATTLE",
+"inHand": 0,
+"rate": 2900
+},
+{
+"description": "1109 KATTLE",
+"inHand": 1,
+"rate": 2900
+},
+{
+"description": "1153 MINIGARMENT STEAMER",
+"inHand": 3,
+"rate": 7100
+},
+{
+"description": "1154 GARMENT STEAMER",
+"inHand": 3,
+"rate": 18700
+},
+{
+"description": "1155 GARMENT STEAMER",
+"inHand": 2,
+"rate": 18700
+},
+{
+"description": "1156 GARMENT STEAMER",
+"inHand": 1,
+"rate": 20600
+},
+{
+"description": "1157 GARMENT STEAMER",
+"inHand": 1,
+"rate": 23000
+},
+{
+"description": "1159 GARMENT STEAMER",
+"inHand": 2,
+"rate": 32300
+},
+{
+"description": "1186 JUICER",
+"inHand": 5,
+"rate": 9800
+},
+{
+"description": "1201 ULTRASONIC ROOM HUMIDFIER",
+"inHand": 2,
+"rate": 12400
+},
+{
+"description": "1205 ULTRASONIC ROOM HUMIDFIER",
+"inHand": 1,
+"rate": 12950
+},
+{
+"description": "1206 ULTRASONIC ROOM HUMIDFIER",
+"inHand": 1,
+"rate": 16050
+},
+{
+"description": "1253 HANDY GARMENT STEAMER",
+"inHand": 4,
+"rate": 7550
+},
+{
+"description": "1301 (TOWER MODEL)(NET RATE)",
+"inHand": 0,
+"rate": 52000
+},
+{
+"description": "1302 (TOWER MODEL)(NET RATE)",
+"inHand": 0,
+"rate": 51000
+},
+{
+"description": "1303 (PLASTIC TOP)(NET RATE)",
+"inHand": 0,
+"rate": 21000
+},
+{
+"description": "1304 (GLASS TOP)(NET RATE)",
+"inHand": 0,
+"rate": 22000
+},
+{
+"description": "1306 (AC/DC MODEL)(NET RATE)",
+"inHand": 0,
+"rate": 23500
+},
+{
+"description": "1308 (BLDS MOTER)(NET RATE)",
+"inHand": 0,
+"rate": 25020
+},
+{
+"description": "1353 HANDY GARMENT STEAMER",
+"inHand": 3,
+"rate": 8600
+},
+{
+"description": "1401 WATER DISPENSER (NET RATE)",
+"inHand": 0,
+"rate": 32500
+},
+{
+"description": "142 CERAMIC COOKER",
+"inHand": 8,
+"rate": 14700
+},
+{
+"description": "143 INDUCTION COOKER",
+"inHand": 5,
+"rate": 17000
+},
+{
+"description": "152 CERAMIC COOKER",
+"inHand": 5,
+"rate": 16100
+},
+{
+"description": "162 CERAMIC COOKER",
+"inHand": -1,
+"rate": 15500
+},
+{
+"description": "1833 JUICER (3*1)",
+"inHand": 4,
+"rate": 15200
+},
+{
+"description": "1834 JUICER (3*1)",
+"inHand": 7,
+"rate": 16200
+},
+{
+"description": "1844 JUICER (4*1)",
+"inHand": 3,
+"rate": 17100
+},
+{
+"description": "1845 JUICER (4*1)",
+"inHand": 4,
+"rate": 23150
+},
+{
+"description": "1846 JUICER (4*1)",
+"inHand": 2,
+"rate": 24500
+},
+{
+"description": "1847 JUICER (4*1)",
+"inHand": 4,
+"rate": 25500
+},
+{
+"description": "1860 FOOD PROCESSOR",
+"inHand": 0,
+"rate": 21100
+},
+{
+"description": "2020 IRON",
+"inHand": 0,
+"rate": 7600
+},
+{
+"description": "2023 COFFE MAKER",
+"inHand": 1,
+"rate": 9900
+},
+{
+"description": "2024 COFFEE MAKER",
+"inHand": 1,
+"rate": 20300
+},
+{
+"description": "2025 COFFE MAKER EXPRESO",
+"inHand": 3,
+"rate": 43200
+},
+{
+"description": "2063 IRON",
+"inHand": 1,
+"rate": 7800
+},
+{
+"description": "2064 IRON",
+"inHand": 3,
+"rate": 7500
+},
+{
+"description": "2065 IRON",
+"inHand": 0,
+"rate": 7500
+},
+{
+"description": "209 FEEDER WARMER (SINGLE)",
+"inHand": 0,
+"rate": 5000
+},
+{
+"description": "2108 SANDWICH MAKER",
+"inHand": 0,
+"rate": 9200
+},
+{
+"description": "231 STICK HANDY (MADE IN TURKEY)",
+"inHand": 4,
+"rate": 12800
+},
+{
+"description": "2310 ELECTRIC OVEN (24L APPROXIMATE)",
+"inHand": 1,
+"rate": 18800
+},
+{
+"description": "238 CAPSULE TYP",
+"inHand": 0,
+"rate": 23600
+},
+{
+"description": "2386 IRON",
+"inHand": 11,
+"rate": 4350
+},
+{
+"description": "2405 JUICER",
+"inHand": 5,
+"rate": 9800
+},
+{
+"description": "2409 JUICER (4*1)",
+"inHand": 3,
+"rate": 13400
+},
+{
+"description": "2430 IRON",
+"inHand": 5,
+"rate": 4900
+},
+{
+"description": "2431 IRON",
+"inHand": 7,
+"rate": 4750
+},
+{
+"description": "2432 IRON",
+"inHand": 4,
+"rate": 4350
+},
+{
+"description": "2451 IRON",
+"inHand": 9,
+"rate": 4350
+},
+{
+"description": "2528 TOSTER",
+"inHand": 3,
+"rate": 8600
+},
+{
+"description": "2532 TOSTER",
+"inHand": 1,
+"rate": 7350
+},
+{
+"description": "2538 TOSTER",
+"inHand": 4,
+"rate": 7325
+},
+{
+"description": "2540 TOSTER",
+"inHand": 0,
+"rate": 6850
+},
+{
+"description": "2542 TOSTER",
+"inHand": 3,
+"rate": 6850
+},
+{
+"description": "2553 TOSTER",
+"inHand": 0,
+"rate": 5800
+},
+{
+"description": "2561 TOSTER",
+"inHand": 2,
+"rate": 6850
+},
+{
+"description": "2589 TOSTER",
+"inHand": 0,
+"rate": 6850
+},
+{
+"description": "261  HOT PLATE SINGLE",
+"inHand": 8,
+"rate": 7750
+},
+{
+"description": "2610 ELECTRIC OVEN (27L APPROXIMATE)",
+"inHand": 4,
+"rate": 22000
+},
+{
+"description": "262 HOT PLATE DOUBLE",
+"inHand": 3,
+"rate": 11200
+},
+{
+"description": "271 HOT PLATE SINGLE",
+"inHand": 10,
+"rate": 7750
+},
+{
+"description": "272 HOT PLATE DOUBLE",
+"inHand": 4,
+"rate": 11200
+},
+{
+"description": "2800 ELECTRIC OVEN (30L APPROXIMATE)",
+"inHand": 1,
+"rate": 22300
+},
+{
+"description": "2803 FOOD PROCESSOR (9*1)",
+"inHand": 6,
+"rate": 16500
+},
+{
+"description": "2804 FOOD PROCESSOR (9*1)",
+"inHand": 15,
+"rate": 16500
+},
+{
+"description": "2805 FOOD PROCESSOR (9*1)",
+"inHand": 9,
+"rate": 16500
+},
+{
+"description": "281 HOT PLATE SINGLE",
+"inHand": 0,
+"rate": 7300
+},
+{
+"description": "282 HOT PLATE DOUBLE",
+"inHand": 0,
+"rate": 10600
+},
+{
+"description": "291 CERAMIC COOKER",
+"inHand": 2,
+"rate": 14900
+},
+{
+"description": "292 HOT PLATE DOUBAL",
+"inHand": 0,
+"rate": 23200
+},
+{
+"description": "301 BLENDER (DOUBLE)",
+"inHand": 9,
+"rate": 8700
+},
+{
+"description": "302 BLENDER (DOUBLE)",
+"inHand": 6,
+"rate": 8700
+},
+{
+"description": "303 BLENDER (DOUBLE)",
+"inHand": 4,
+"rate": 8700
+},
+{
+"description": "304 BLENDER (DOUBLE)",
+"inHand": 6,
+"rate": 8700
+},
+{
+"description": "3040 MEAT MINDER",
+"inHand": 0,
+"rate": 17900
+},
+{
+"description": "3050 MEAT MINDER",
+"inHand": 9,
+"rate": 24600
+},
+{
+"description": "307 BLENDER (DOUBLE)",
+"inHand": 6,
+"rate": 8700
+},
+{
+"description": "308 BLENDER (DOUBLE)",
+"inHand": 8,
+"rate": 8700
+},
+{
+"description": "3115 KATTLE",
+"inHand": 1,
+"rate": 1380
+},
+{
+"description": "3117 KATTLE",
+"inHand": 24,
+"rate": 3500
+},
+{
+"description": "3118 KATTLE",
+"inHand": 0,
+"rate": 3500
+},
+{
+"description": "3119 KATTLE",
+"inHand": 5,
+"rate": 3500
+},
+{
+"description": "312 BLENDER (DOUBLE)",
+"inHand": 2,
+"rate": 6950
+},
+{
+"description": "313 BLENDER",
+"inHand": 1,
+"rate": 6950
+},
+{
+"description": "314 BLENDER (DOUBLE)",
+"inHand": 0,
+"rate": 6950
+},
+{
+"description": "3165 PIZA MAKER",
+"inHand": 0,
+"rate": 9250
+},
+{
+"description": "3166 PIZZA PAN",
+"inHand": 3,
+"rate": 9350
+},
+{
+"description": "3256 AIR FRYER (4 LITER)",
+"inHand": 0,
+"rate": 19200
+},
+{
+"description": "329 BABY BOTLE STERYLIZER",
+"inHand": 5,
+"rate": 6600
+},
+{
+"description": "330 BABY BOTLE STERYLIZER",
+"inHand": 5,
+"rate": 8200
+},
+{
+"description": "332 BLENDER (SINGLE)",
+"inHand": 8,
+"rate": 6400
+},
+{
+"description": "3321 BLENDER (SINGLE)",
+"inHand": 8,
+"rate": 6400
+},
+{
+"description": "333 BLENDER (DOUBLE)",
+"inHand": -1,
+"rate": 6350
+},
+{
+"description": "3331 BLENDER (DOUBLE)",
+"inHand": 6,
+"rate": 6850
+},
+{
+"description": "342 BLENDER (DOUBLE)",
+"inHand": 0,
+"rate": 8150
+},
+{
+"description": "343 BLENDER (DOUBLE)",
+"inHand": 0,
+"rate": 8150
+},
+{
+"description": "3469 DRUM TYP",
+"inHand": 8,
+"rate": 29300
+},
+{
+"description": "3569 DRUM TYP (MADE IN TURKEY)",
+"inHand": 0,
+"rate": 29300
+},
+{
+"description": "3601 CAPSULE TYP",
+"inHand": 0,
+"rate": 13000
+},
+{
+"description": "3602 CAPSULE TYP",
+"inHand": 0,
+"rate": 13900
+},
+{
+"description": "3616 DOUGH MAKER",
+"inHand": 5,
+"rate": 15500
+},
+{
+"description": "3617 DOUGH MAKER DIGITAL",
+"inHand": 1,
+"rate": 25500
+},
+{
+"description": "3618 DOUGH MAKER WITH CHOPPER",
+"inHand": 0,
+"rate": 32000
+},
+{
+"description": "364 BLENDER GRINDER (2*1)",
+"inHand": 0,
+"rate": 13900
+},
+{
+"description": "366 BLENDER CHOPPER (2*1)",
+"inHand": 0,
+"rate": 14400
+},
+{
+"description": "3669 DRUM TYP STEL BODY",
+"inHand": 5,
+"rate": 30250
+},
+{
+"description": "367 BLENDER GRINDER (3*1)",
+"inHand": 4,
+"rate": 17100
+},
+{
+"description": "372 BLENDER (SINGEL)",
+"inHand": 0,
+"rate": 10300
+},
+{
+"description": "373 BLENDER (DOUBLE)",
+"inHand": 5,
+"rate": 11400
+},
+{
+"description": "3804 FOOD PROCESSOR (9*1)",
+"inHand": 8,
+"rate": 16500
+},
+{
+"description": "3870 FOOT MASSAGER",
+"inHand": 1,
+"rate": 12600
+},
+{
+"description": "393 BLENDER CHOPER (3*1)",
+"inHand": 9,
+"rate": 16200
+},
+{
+"description": "408 KATTLE",
+"inHand": 0,
+"rate": 5300
+},
+{
+"description": "409 KATTLE",
+"inHand": 13,
+"rate": 5300
+},
+{
+"description": "410 KATTLE",
+"inHand": 11,
+"rate": 6250
+},
+{
+"description": "411 KATTLE",
+"inHand": 0,
+"rate": 4600
+},
+{
+"description": "4201 HAND BEATER",
+"inHand": 11,
+"rate": 10150
+},
+{
+"description": "4250 MEAT MINDER",
+"inHand": 3,
+"rate": 26200
+},
+{
+"description": "4256 AIR FRYER (8 LITER)",
+"inHand": 0,
+"rate": 25400
+},
+{
+"description": "4257 AIR FRYER XL (6.5L)",
+"inHand": 4,
+"rate": 28100
+},
+{
+"description": "4258 AIR FRYER (4.5L & 4.5L)",
+"inHand": 8,
+"rate": 32500
+},
+{
+"description": "4259 AIR FRYER (9 LITER)",
+"inHand": 1,
+"rate": 29000
+},
+{
+"description": "4307 TOWER HEATER",
+"inHand": 1,
+"rate": 9500
+},
+{
+"description": "4360 KITCHEN WEIGHT SCALE",
+"inHand": 2,
+"rate": 4500
+},
+{
+"description": "441 BLENDER CHOPER (3*1)",
+"inHand": 9,
+"rate": 11700
+},
+{
+"description": "442 BLENDER CHOPER (3*1)",
+"inHand": 5,
+"rate": 11700
+},
+{
+"description": "443 BLENDER CHOPER (3*1)",
+"inHand": 1,
+"rate": 11700
+},
+{
+"description": "445 BLENDER CHOPER (4*1)",
+"inHand": 4,
+"rate": 14900
+},
+{
+"description": "448 BLENDER COMMERCIAL (2*1)",
+"inHand": 5,
+"rate": 21000
+},
+{
+"description": "449 BLENDER (NUTRI BLAST)",
+"inHand": 5,
+"rate": 18600
+},
+{
+"description": "4500 ELECTRIC OVEN (45L APPROXIMATE)",
+"inHand": 0,
+"rate": 30200
+},
+{
+"description": "4616 DOUGH MIXER (4.3 LITER)",
+"inHand": 0,
+"rate": 24100
+},
+{
+"description": "4626 DOUGH MIXER (4.8 LITER)",
+"inHand": 4,
+"rate": 25500
+},
+{
+"description": "4627 DOUGH MIXER WITH BLENDER (5 LITER)",
+"inHand": 5,
+"rate": 29000
+},
+{
+"description": "4636 DOUGH MIXER (7 LITER)",
+"inHand": 0,
+"rate": 31100
+},
+{
+"description": "4646 DOUGH MIXER (7 LITER)",
+"inHand": 4,
+"rate": 31100
+},
+{
+"description": "4711 ELECTRIC OVEN (47L APPROXIMATE)",
+"inHand": 0,
+"rate": 31600
+},
+{
+"description": "4800 ELECTRIC OVEN (55L APPROXIMATE)",
+"inHand": 0,
+"rate": 31300
+},
+{
+"description": "4805 FOOD PROCESSOR (9*1)",
+"inHand": 9,
+"rate": 18200
+},
+{
+"description": "4806 FOOD PROCESSOR (9*1)",
+"inHand": 12,
+"rate": 18200
+},
+{
+"description": "495 MEAT MINDER & VEG CUTER",
+"inHand": 0,
+"rate": 13000
+},
+{
+"description": "496 MEAT MINDER & VEG CUTER",
+"inHand": 0,
+"rate": 13200
+},
+{
+"description": "497 MEAT MINDER & VEG CUTER",
+"inHand": 2,
+"rate": 13200
+},
+{
+"description": "498 MEAT MINDER & VEG CUTER",
+"inHand": 5,
+"rate": 14050
+},
+{
+"description": "4981 MEAT MINDER & JUG",
+"inHand": 2,
+"rate": 16750
+},
+{
+"description": "501 MEAT MINDER & VEG CUTER",
+"inHand": 2,
+"rate": 13750
+},
+{
+"description": "502 MEAT MINDER & VEG CUTER",
+"inHand": 8,
+"rate": 14150
+},
+{
+"description": "503 MEAT MINDER & VEG CUTER",
+"inHand": 7,
+"rate": 14150
+},
+{
+"description": "504 MEAT MINDER & VEG CUTER",
+"inHand": 6,
+"rate": 14150
+},
+{
+"description": "505 MEAT MINDER & VEG CUTER",
+"inHand": 0,
+"rate": 13750
+},
+{
+"description": "506 MEAT MINDER & VEG CUTER",
+"inHand": 3,
+"rate": 14150
+},
+{
+"description": "5110 INSECT KILLER",
+"inHand": 1,
+"rate": 9850
+},
+{
+"description": "5112 INSECT KILLER",
+"inHand": 11,
+"rate": 12700
+},
+{
+"description": "5144 FAN HEATER",
+"inHand": 3,
+"rate": 5300
+},
+{
+"description": "5145 FAN HEATER",
+"inHand": 5,
+"rate": 8200
+},
+{
+"description": "5146 FAN HEATER",
+"inHand": 1,
+"rate": 8200
+},
+{
+"description": "5147 FAN HEATER",
+"inHand": 0,
+"rate": 8200
+},
+{
+"description": "5160 JUICER",
+"inHand": 4,
+"rate": 12850
+},
+{
+"description": "5161 JUICRE",
+"inHand": 5,
+"rate": 13150
+},
+{
+"description": "5164 JUICER",
+"inHand": 4,
+"rate": 17300
+},
+{
+"description": "5165 PROFESSIONAL JUICER",
+"inHand": 2,
+"rate": 26000
+},
+{
+"description": "5252 EGG BOILER",
+"inHand": 0,
+"rate": 6200
+},
+{
+"description": "5253 AIR FRYER (6 LITER)",
+"inHand": 0,
+"rate": 22800
+},
+{
+"description": "5254 AIR FRYER (6 LITER)",
+"inHand": 0,
+"rate": 22500
+},
+{
+"description": "5255 AIR FRYER (6 LITER)",
+"inHand": 0,
+"rate": 22800
+},
+{
+"description": "5256 AIR FRYER (6 LITER)",
+"inHand": 0,
+"rate": 22800
+},
+{
+"description": "5257 AIR FRYER DIGITAL (6.5L)",
+"inHand": 0,
+"rate": 34000
+},
+{
+"description": "5258 OVEN TOSTER & AIR FRYER",
+"inHand": 1,
+"rate": 35200
+},
+{
+"description": "5259 OVEN TOSTER & AIR FRYER",
+"inHand": 4,
+"rate": 40000
+},
+{
+"description": "5309 HELOGEN HEATER",
+"inHand": 1,
+"rate": 6250
+},
+{
+"description": "5350  RICE COOKER",
+"inHand": 0,
+"rate": 12300
+},
+{
+"description": "545 CITRUS",
+"inHand": 0,
+"rate": 4800
+},
+{
+"description": "546 CITRUS",
+"inHand": 10,
+"rate": 5350
+},
+{
+"description": "547 CITRUS",
+"inHand": 15,
+"rate": 4400
+},
+{
+"description": "549 CITRUS",
+"inHand": 10,
+"rate": 2700
+},
+{
+"description": "550 CITRUS",
+"inHand": 0,
+"rate": 5300
+},
+{
+"description": "5500 ELECTRIC OVEN (55L APPROXIMATE)",
+"inHand": 0,
+"rate": 33800
+},
+{
+"description": "553 CITRUS",
+"inHand": 6,
+"rate": 9700
+},
+{
+"description": "554 CITRUS",
+"inHand": 3,
+"rate": 9700
+},
+{
+"description": "578 KATTLE",
+"inHand": 3,
+"rate": 6200
+},
+{
+"description": "5805 FOOD PROCESSOR (9*1)",
+"inHand": 3,
+"rate": 17750
+},
+{
+"description": "5806 FOOD PROCESSOR (9*1)",
+"inHand": 11,
+"rate": 17750
+},
+{
+"description": "6093 SANDWICH MAKER",
+"inHand": 3,
+"rate": 9600
+},
+{
+"description": "614 FACE STEAMER",
+"inHand": 0,
+"rate": 3350
+},
+{
+"description": "6170 KATTLE",
+"inHand": 5,
+"rate": 6500
+},
+{
+"description": "6171 KATTLE",
+"inHand": 9,
+"rate": 7050
+},
+{
+"description": "6172 KATTLE",
+"inHand": 16,
+"rate": 6850
+},
+{
+"description": "6173 KATTLE",
+"inHand": 6,
+"rate": 6850
+},
+{
+"description": "6174 KATTLE",
+"inHand": 11,
+"rate": 8100
+},
+{
+"description": "6175 KATTLE",
+"inHand": 17,
+"rate": 7300
+},
+{
+"description": "6177 KATTLE",
+"inHand": 1,
+"rate": 4450
+},
+{
+"description": "6178 KATTLE",
+"inHand": 6,
+"rate": 10100
+},
+{
+"description": "6179 KATTLE",
+"inHand": 4,
+"rate": 3050
+},
+{
+"description": "6180 KATTLE",
+"inHand": 0,
+"rate": 5050
+},
+{
+"description": "6184 KATTLE",
+"inHand": 15,
+"rate": 8100
+},
+{
+"description": "6193 SANDWICH MAKER",
+"inHand": 4,
+"rate": 9600
+},
+{
+"description": "6201 HAIR DRAYIR",
+"inHand": 11,
+"rate": 4000
+},
+{
+"description": "6203 HAIR DRAYIR",
+"inHand": 25,
+"rate": 4775
+},
+{
+"description": "6217 HAIR DRAYIR",
+"inHand": 11,
+"rate": 4575
+},
+{
+"description": "6259 HAIR DRAYIR",
+"inHand": 22,
+"rate": 5500
+},
+{
+"description": "6260 HAIR DRAYIR",
+"inHand": 25,
+"rate": 5500
+},
+{
+"description": "6261 HAIR DRAYIR",
+"inHand": 6,
+"rate": 6000
+},
+{
+"description": "6270 HAIR DRAYIR",
+"inHand": 24,
+"rate": 6525
+},
+{
+"description": "6275 KATTLE",
+"inHand": 14,
+"rate": 7600
+},
+{
+"description": "6280 HAIR DRYER",
+"inHand": 0,
+"rate": 6875
+},
+{
+"description": "6293 SANDWICH MAKER",
+"inHand": 3,
+"rate": 9600
+},
+{
+"description": "6300 ELECTRIC OVEN (63L APPROXIMATE)",
+"inHand": 4,
+"rate": 36700
+},
+{
+"description": "6307 TOWER HEATER",
+"inHand": 0,
+"rate": 15600
+},
+{
+"description": "636 SANDWICH MAKER",
+"inHand": 5,
+"rate": 5550
+},
+{
+"description": "6362 EPILADOR",
+"inHand": 3,
+"rate": 7100
+},
+{
+"description": "637 SANDWICH MAKER",
+"inHand": 7,
+"rate": 5750
+},
+{
+"description": "6370 HAIR DRAYIR",
+"inHand": 7,
+"rate": 5050
+},
+{
+"description": "638 SANDWICH MAKER",
+"inHand": 5,
+"rate": 5750
+},
+{
+"description": "639 SANDWICH MAKER",
+"inHand": 5,
+"rate": 5750
+},
+{
+"description": "6393 SANDWICH MAKER",
+"inHand": -1,
+"rate": 9750
+},
+{
+"description": "640 SANDWICH MAKER",
+"inHand": 4,
+"rate": 5550
+},
+{
+"description": "6514 ROTI MAKER (BIG)",
+"inHand": 4,
+"rate": 13150
+},
+{
+"description": "6611 CURLING STRAIGHTENER",
+"inHand": 7,
+"rate": 4150
+},
+{
+"description": "6613 TRIMER HAIR CLIPPER",
+"inHand": 13,
+"rate": 3950
+},
+{
+"description": "665 BLENDER (DOUBLE)",
+"inHand": 0,
+"rate": 1062
+},
+{
+"description": "6686 SANDWICH MAKER",
+"inHand": 12,
+"rate": 5850
+},
+{
+"description": "6696 SANDWICH MAKER",
+"inHand": 5,
+"rate": 9600
+},
+{
+"description": "6697 SANDWICH MAKER",
+"inHand": 7,
+"rate": 7700
+},
+{
+"description": "671 SANDWICH MAKER",
+"inHand": 11,
+"rate": 5750
+},
+{
+"description": "6711 HAIR STRAIGHTENER",
+"inHand": 6,
+"rate": 5000
+},
+{
+"description": "6713 HAIR CLIPPER",
+"inHand": 4,
+"rate": 3700
+},
+{
+"description": "672 IRON",
+"inHand": 11,
+"rate": 5000
+},
+{
+"description": "6807 HAIR STRAIGHTENER",
+"inHand": 5,
+"rate": 5750
+},
+{
+"description": "6808 HAIR STRAIGHTENER",
+"inHand": 29,
+"rate": 6600
+},
+{
+"description": "6809 HAIR STRAIGHTENER",
+"inHand": 22,
+"rate": 6900
+},
+{
+"description": "6810 HAIR STRAIGHTENER",
+"inHand": 2,
+"rate": 9300
+},
+{
+"description": "6811 HAIR STRAIGHTENER",
+"inHand": 16,
+"rate": 5150
+},
+{
+"description": "6812 HAIR STRAIGHTENER",
+"inHand": 4,
+"rate": 5450
+},
+{
+"description": "6813 HAIR CLIPPER",
+"inHand": 10,
+"rate": 4150
+},
+{
+"description": "691 SANDWICH MAKER",
+"inHand": 2,
+"rate": 5550
+},
+{
+"description": "6912 HAIR DRAYIR & STRAIGHTNER",
+"inHand": 2,
+"rate": 7000
+},
+{
+"description": "692 SANDWICH MAKER",
+"inHand": 4,
+"rate": 5550
+},
+{
+"description": "693 SANDWICH MAKER",
+"inHand": 5,
+"rate": 5550
+},
+{
+"description": "694 SANDWICH MAKER",
+"inHand": 3,
+"rate": 5550
+},
+{
+"description": "7006 WEIGHT SCALE",
+"inHand": 5,
+"rate": 4200
+},
+{
+"description": "7007 WEIGHT SCALE",
+"inHand": -1,
+"rate": 4200
+},
+{
+"description": "7008 WEIGHT SCALE",
+"inHand": 2,
+"rate": 4200
+},
+{
+"description": "7009 WEIGHT SCALE",
+"inHand": 0,
+"rate": 4200
+},
+{
+"description": "7108 INSECT KILLER",
+"inHand": 0,
+"rate": 9850
+},
+{
+"description": "7110 INSECT KILLER",
+"inHand": 0,
+"rate": 11150
+},
+{
+"description": "7112 INSECT KILLER",
+"inHand": 1,
+"rate": 12700
+},
+{
+"description": "7115 INSECT KILLER",
+"inHand": 4,
+"rate": 13900
+},
+{
+"description": "718 BLENDER (SINGEL)",
+"inHand": 2,
+"rate": 5650
+},
+{
+"description": "7181 BLENDER (SINGEL)",
+"inHand": 18,
+"rate": 5650
+},
+{
+"description": "7201 JUICER (3*1)",
+"inHand": 17,
+"rate": 11650
+},
+{
+"description": "7259 AIR FRYER DOUBLE HEATER (9L)",
+"inHand": 1,
+"rate": 36400
+},
+{
+"description": "7260 AIR FRYER DIGITAL (9L)",
+"inHand": 6,
+"rate": 36000
+},
+{
+"description": "738 BLENDER (DOUBEL)",
+"inHand": 18,
+"rate": 6200
+},
+{
+"description": "7381 BLENDER (DOUBAL)",
+"inHand": 11,
+"rate": 6200
+},
+{
+"description": "7500 ELECTRIC OVEN (75L APPROXIMATE)",
+"inHand": 1,
+"rate": 40600
+},
+{
+"description": "7501 JUICER (3*1)",
+"inHand": 17,
+"rate": 11650
+},
+{
+"description": "7701 JUICER (3*1)",
+"inHand": 12,
+"rate": 11650
+},
+{
+"description": "772 IRON",
+"inHand": 2,
+"rate": 5250
+},
+{
+"description": "773 IRON",
+"inHand": 7,
+"rate": 5250
+},
+{
+"description": "7805 FOOD PROCESSOR (9*1)",
+"inHand": 12,
+"rate": 18200
+},
+{
+"description": "7806 FOOD PROCESSOR (9*1)",
+"inHand": 10,
+"rate": 18200
+},
+{
+"description": "78B IRON",
+"inHand": 13,
+"rate": 6075
+},
+{
+"description": "7901 JUICER (3*1)",
+"inHand": 20,
+"rate": 11650
+},
+{
+"description": "80B IRON",
+"inHand": 14,
+"rate": 6075
+},
+{
+"description": "81B IRON",
+"inHand": 16,
+"rate": 6075
+},
+{
+"description": "822 MICRO MANUAL (20L) NET RATE",
+"inHand": 7,
+"rate": 15500
+},
+{
+"description": "823 MICRO MANUAL (20L) NET RATE",
+"inHand": 10,
+"rate": 15500
+},
+{
+"description": "824 MICRO MANUAL (20L) NET RATE",
+"inHand": 1,
+"rate": 15700
+},
+{
+"description": "8247 KATTLE",
+"inHand": 0,
+"rate": 3200
+},
+{
+"description": "825 MICRO MANUAL (20L) NET RATE",
+"inHand": 8,
+"rate": 16500
+},
+{
+"description": "8260 KATTLE",
+"inHand": 9,
+"rate": 2025
+},
+{
+"description": "8266 KATTLE",
+"inHand": 11,
+"rate": 6450
+},
+{
+"description": "8267 KATTLE",
+"inHand": 22,
+"rate": 6450
+},
+{
+"description": "8268 KATTLE",
+"inHand": 9,
+"rate": 6450
+},
+{
+"description": "8269 KATTLE",
+"inHand": 12,
+"rate": 6450
+},
+{
+"description": "8270 KATTLE",
+"inHand": 13,
+"rate": 6450
+},
+{
+"description": "8290 KATTLE",
+"inHand": 3,
+"rate": 4200
+},
+{
+"description": "830 MICRO TOUCH WITH GRIL NET RATE (28L)",
+"inHand": 0,
+"rate": 23700
+},
+{
+"description": "832 MICRO TOUCH WITH GRIL NET RATE (30L) WEST POINT MICROWAVE OVEN",
+"inHand": 3,
+"rate": 31000
+},
+{
+"description": "841 MICRO TOUCH WITH GRIL NET RATE (40L) WEST POINT MICROWAVE OVEN",
+"inHand": 4,
+"rate": 32000
+},
+{
+"description": "84B IRON",
+"inHand": 0,
+"rate": 5850
+},
+{
+"description": "851 MICRO TOUCH WITH GRIL (40L)",
+"inHand": 1,
+"rate": 29500
+},
+{
+"description": "853 MICRO TOUCH WITH GRIL (44L APPROXIMATE)",
+"inHand": 1,
+"rate": 35000
+},
+{
+"description": "854 MICRO TOUCH WITH GRIL (55L)",
+"inHand": 0,
+"rate": 26500
+},
+{
+"description": "85B IRON",
+"inHand": 7,
+"rate": 5850
+},
+{
+"description": "8605 WEIGHT SCALE",
+"inHand": 3,
+"rate": 5150
+},
+{
+"description": "8607 WEIGHT SCALE",
+"inHand": 2,
+"rate": 5150
+},
+{
+"description": "86B IRON",
+"inHand": 11,
+"rate": 5850
+},
+{
+"description": "8813 JUICER (3*1)",
+"inHand": 22,
+"rate": 12250
+},
+{
+"description": "8814 JUICER (4*1)",
+"inHand": 25,
+"rate": 13600
+},
+{
+"description": "8815 FOOD PROCESSOR",
+"inHand": 4,
+"rate": 17700
+},
+{
+"description": "8817 FOOD PROCESS0R",
+"inHand": 3,
+"rate": 29200
+},
+{
+"description": "8818 FOOD PROCESSOR (11*1)",
+"inHand": 3,
+"rate": 35500
+},
+{
+"description": "8819 FOOD PROCESS0R",
+"inHand": 4,
+"rate": 35500
+},
+{
+"description": "8822 SUN HEATER (NET RATE)",
+"inHand": 25,
+"rate": 1150
+},
+{
+"description": "8823 JUICER (3*1)",
+"inHand": 0,
+"rate": 12250
+},
+{
+"description": "8824 JUICER (4*1)",
+"inHand": 3,
+"rate": 13600
+},
+{
+"description": "8833 FISH HEATER (NET RATE)",
+"inHand": 119,
+"rate": 760
+},
+{
+"description": "8844 BOX WITH STAND HEATER (NET RATE)",
+"inHand": 0,
+"rate": 940
+},
+{
+"description": "8877 BOX HEATER (NET RATE)",
+"inHand": 26,
+"rate": 870
+},
+{
+"description": "90B IRON",
+"inHand": 0,
+"rate": 6075
+},
+{
+"description": "9202 HAND BEATER",
+"inHand": 6,
+"rate": 5650
+},
+{
+"description": "9214 HAND BEATER",
+"inHand": 10,
+"rate": 6950
+},
+{
+"description": "9215 HAND BEATER",
+"inHand": 28,
+"rate": 7600
+},
+{
+"description": "9216 HAND BEATER",
+"inHand": 14,
+"rate": 10150
+},
+{
+"description": "9224 COFFY GRINDER",
+"inHand": 7,
+"rate": 8000
+},
+{
+"description": "9225 COFFY GRINDER",
+"inHand": 12,
+"rate": 9250
+},
+{
+"description": "9226 COFFY GRINDER",
+"inHand": 22,
+"rate": 7900
+},
+{
+"description": "9228 COFFEE GRINDER (DRY/WET)",
+"inHand": 2,
+"rate": 8400
+},
+{
+"description": "929 BLENDER (SINGEL)",
+"inHand": 16,
+"rate": 5650
+},
+{
+"description": "9291 BLENDER (SINGEL)",
+"inHand": 12,
+"rate": 5650
+},
+{
+"description": "9301 HAND BEATER",
+"inHand": 16,
+"rate": 6050
+},
+{
+"description": "9401 HAND MIXER",
+"inHand": 8,
+"rate": 5650
+},
+{
+"description": "949 BLENDER (DOUBAL)",
+"inHand": 14,
+"rate": 6200
+},
+{
+"description": "9491 BLENDER (DOUBAL)",
+"inHand": 31,
+"rate": 6200
+},
+{
+"description": "9501 HAND BEATER",
+"inHand": 4,
+"rate": 4800
+},
+{
+"description": "960 DRUM TYP",
+"inHand": 2,
+"rate": 26500
+},
+{
+"description": "9601 HAND BEATER",
+"inHand": 8,
+"rate": 5650
+},
+{
+"description": "9701 HAND BEATER",
+"inHand": 21,
+"rate": 6050
+},
+{
+"description": "9714 HAND BEATER",
+"inHand": 17,
+"rate": 6950
+},
+{
+"description": "9715 HAND BEATER",
+"inHand": 10,
+"rate": 7550
+},
+{
+"description": "9800 HAND BEATER",
+"inHand": 8,
+"rate": 5500
+},
+{
+"description": "9801 HAND BEATER",
+"inHand": 12,
+"rate": 5900
+},
+{
+"description": "9802 HAND BEATER",
+"inHand": 15,
+"rate": 7250
+},
+{
+"description": "9804  HAND BEATER",
+"inHand": 3,
+"rate": 6200
+},
+{
+"description": "9805 HAND BEATER",
+"inHand": 28,
+"rate": 6400
+},
+{
+"description": "9806 HAND BEATER",
+"inHand": 14,
+"rate": 7000
+},
+{
+"description": "9807 HAND BEATER",
+"inHand": 14,
+"rate": 7000
+},
+{
+"description": "9808 WEIGHT SCALE",
+"inHand": 6,
+"rate": 3750
+},
+{
+"description": "9809 WEIGHT SCALE",
+"inHand": 6,
+"rate": 3750
+},
+{
+"description": "9814 HAND BEATER",
+"inHand": 17,
+"rate": 6900
+},
+{
+"description": "9815 HAND BEATER",
+"inHand": 14,
+"rate": 7550
+},
+{
+"description": "9816 HAND BEATER",
+"inHand": 10,
+"rate": 10150
+},
+{
+"description": "9826 HAND MIXER WITH BOWL",
+"inHand": 1,
+"rate": 10000
+},
+{
+"description": "989 KATTLE",
+"inHand": 0,
+"rate": 6050
+},
+{
+"description": "98B IRON",
+"inHand": 1,
+"rate": 6075
+},
+{
+"description": "9901 HAND BEATER",
+"inHand": 10,
+"rate": 5650
+},
+{
+"description": "9914 HAND BEATER",
+"inHand": 10,
+"rate": 7200
+},
+{
+"description": "9915 HAND BEATER",
+"inHand": 10,
+"rate": 8250
+},
+{
+"description": "9916 HAND BEATER",
+"inHand": 0,
+"rate": 11500
+},
+{
+"description": "9934 HAND BEATER",
+"inHand": 11,
+"rate": 7350
+},
+{
+"description": "9935 HAND BEATER",
+"inHand": 14,
+"rate": 7650
+},
+{
+"description": "9936 HAND BEATER",
+"inHand": 6,
+"rate": 8600
+}
+]
