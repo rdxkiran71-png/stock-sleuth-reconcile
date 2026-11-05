@@ -58,6 +58,8 @@ export const QuickEntryBar = forwardRef<QuickEntryBarHandle, Props>(function Qui
   const [rate, setRate] = useState("");
   const [dupFor, setDupFor] = useState<StockItem | null>(null);
   const [error, setError] = useState("");
+  const [dupQty, setDupQty] = useState("");
+  const [dupError, setDupError] = useState("");
   const codeRef = useRef<HTMLInputElement>(null);
   const qtyRef = useRef<HTMLInputElement>(null);
   const saveRef = useRef<HTMLButtonElement>(null);
@@ -74,6 +76,8 @@ export const QuickEntryBar = forwardRef<QuickEntryBarHandle, Props>(function Qui
     setError("");
     if (existingQtys(item.id).length > 0) {
       afterDialog.current = "code";
+      setDupQty("");
+      setDupError("");
       setDupFor(item);
       return;
     }
@@ -120,6 +124,19 @@ export const QuickEntryBar = forwardRef<QuickEntryBarHandle, Props>(function Qui
   };
 
   const dupQtys = dupFor ? existingQtys(dupFor.id) : [];
+
+  const saveDup = () => {
+    if (!dupFor) return;
+    const q = Number(dupQty);
+    if (dupQty.trim() === "" || !Number.isInteger(q) || q < 0) {
+      setDupError("Enter a whole number quantity.");
+      return;
+    }
+    onAdd(dupFor, q, dupFor.rate);
+    afterDialog.current = "code";
+    setDupFor(null);
+    reset();
+  };
 
   return (
     <>
@@ -309,10 +326,34 @@ export const QuickEntryBar = forwardRef<QuickEntryBarHandle, Props>(function Qui
                     <span>{fmtNum(dupQtys.reduce((a, b) => a + b, 0))} pcs</span>
                   </li>
                 </ul>
-                <p>Add another entry for this item? It will show directly under the earlier line.</p>
+                <p>Type the new quantity and press Enter to add it directly under the earlier line.</p>
               </div>
             </AlertDialogDescription>
           </AlertDialogHeader>
+          <div className="grid gap-1">
+            <label className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
+              New {qtyLabel}
+            </label>
+            <input
+              autoFocus
+              type="number"
+              inputMode="numeric"
+              min={0}
+              value={dupQty}
+              onChange={(e) => {
+                setDupQty(e.target.value);
+                setDupError("");
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  e.preventDefault();
+                  saveDup();
+                }
+              }}
+              className="num h-11 w-full rounded-md border border-input bg-paper px-3 text-right text-base font-semibold outline-none transition focus:border-primary focus:ring-2 focus:ring-ring/30"
+            />
+            {dupError && <span className="text-xs font-medium text-short">{dupError}</span>}
+          </div>
           <AlertDialogFooter>
             <AlertDialogCancel
               onClick={() => {
@@ -324,15 +365,12 @@ export const QuickEntryBar = forwardRef<QuickEntryBarHandle, Props>(function Qui
               Cancel
             </AlertDialogCancel>
             <AlertDialogAction
-              autoFocus
-              onClick={() => {
-                const it = dupFor;
-                afterDialog.current = "qty";
-                setDupFor(null);
-                if (it) accept(it);
+              onClick={(e) => {
+                e.preventDefault();
+                saveDup();
               }}
             >
-              Yes, add again
+              Add
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
