@@ -207,10 +207,10 @@ function StockEntryPage() {
             size="sm"
             className="text-destructive"
             onClick={() => {
-              if (confirm("Reset everything back to the original list? All computer entries and sales will be cleared.")) {
-                actions.resetAll();
-                toast.success("Reset to original list");
-              }
+              if (!confirm("Reset everything back to the original list? All computer entries and sales will be cleared.")) return;
+              if (!confirm("Pakka sure hain? Reset ke baad sab entries aur sales hamesha ke liye delete ho jayengi.")) return;
+              actions.resetAll();
+              toast.success("Reset to original list");
             }}
           >
             <RotateCcw /> Reset
@@ -225,7 +225,10 @@ function StockEntryPage() {
               e.target.value = "";
               if (!f) return;
               try {
-                actions.replaceAll(parseBackup(await f.text()));
+                const next = parseBackup(await f.text());
+                if (!confirm("Is backup file se restore karein? Abhi ki tamam entries aur sales is file wali entries se badal jayengi.")) return;
+                if (!confirm("Pakka sure hain? Abhi ka data khatam ho jayega aur backup wala data aa jayega.")) return;
+                actions.replaceAll(next);
                 toast.success("Backup restored");
               } catch (err) {
                 toast.error(err instanceof Error ? err.message : "Could not read file");
