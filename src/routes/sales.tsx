@@ -176,6 +176,8 @@ function SalesPage() {
                               title="Delete"
                               className="rounded p-1 text-muted-foreground hover:bg-short-soft hover:text-short"
                               onClick={() => {
+                                const name = byId.get(x.itemId)?.description ?? "Deleted item";
+                                if (!confirm(`Kya aap "${name}" (qty ${x.qty}) ki sale delete kar rahe hain?`)) return;
                                 actions.deleteSale(x.id);
                                 toast.success("Sale removed");
                               }}

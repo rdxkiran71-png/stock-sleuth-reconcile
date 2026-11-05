@@ -95,7 +95,11 @@ export function EntryLines({
                       <button
                         type="button"
                         title="Delete line"
-                        onClick={() => actions.deleteEntry(e.id)}
+                        onClick={() => {
+                          const name = item?.description ?? "Deleted item";
+                          if (confirm(`Kya aap "${name}" (qty ${e.qty}) ki entry delete kar rahe hain?`))
+                            actions.deleteEntry(e.id);
+                        }}
                         className="rounded p-1 text-muted-foreground hover:bg-short-soft hover:text-short"
                       >
                         <Trash2 className="size-3.5" />
