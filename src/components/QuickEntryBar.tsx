@@ -22,6 +22,8 @@ interface Props {
   /** Quantities of lines already added for this item (in order). */
   existingQtys: (itemId: string) => number[];
   onAdd: (item: StockItem, qty: number, rate: number) => void;
+  /** 1-based positions (in order of adding) of this item's lines, plus total lines so far. */
+  positions?: (itemId: string) => { at: number[]; total: number };
   /** Show an editable rate field (used for sales). */
   withRate?: boolean;
   qtyLabel?: string;
@@ -48,7 +50,7 @@ function search(items: StockItem[], q: string): StockItem[] {
 }
 
 export const QuickEntryBar = forwardRef<QuickEntryBarHandle, Props>(function QuickEntryBar(
-  { items, existingQtys, onAdd, withRate = false, qtyLabel = "Qty", saveLabel = "Save" },
+  { items, existingQtys, positions, onAdd, withRate = false, qtyLabel = "Qty", saveLabel = "Save" },
   ref,
 ) {
   const [query, setQuery] = useState("");
@@ -315,12 +317,29 @@ export const QuickEntryBar = forwardRef<QuickEntryBarHandle, Props>(function Qui
                   {dupQtys.length === 1 ? "once" : `${dupQtys.length} times`}:
                 </p>
                 <ul className="num rounded-md border border-border bg-muted p-2 text-foreground">
-                  {dupQtys.map((q, i) => (
-                    <li key={i} className="flex justify-between">
-                      <span>Entry {i + 1}</span>
+                  {dupQtys.map((q, i) => {
+                    const pos = dupFor && positions ? positions(dupFor.id) : null;
+                    const at = pos?.at[i];
+                    const ago = pos && at ? pos.total - at + 1 : null;
+                    return (
+                    <li key={i} className="flex justify-between gap-3">
+                      <span>
+                        Entry {i + 1}
+                        {at != null && (
+                          <span className="ml-2 text-xs text-muted-foreground">
+                            line #{at} · {ago === 1 ? "last entry" : `${ago} entries pehle`}
+                          </span>
+                        )}
+                      </span>
                       <span className="font-semibold">{fmtNum(q)} pcs</span>
                     </li>
-                  ))}
+                    );
+                  })}
+                  {dupFor && positions && (
+                    <li className="text-xs text-muted-foreground">
+                      Abhi aap entry #{positions(dupFor.id).total + 1} par hain.
+                    </li>
+                  )}
                   <li className="mt-1 flex justify-between border-t border-border pt-1 font-bold">
                     <span>Total so far</span>
                     <span>{fmtNum(dupQtys.reduce((a, b) => a + b, 0))} pcs</span>

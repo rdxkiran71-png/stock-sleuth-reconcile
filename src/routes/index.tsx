@@ -252,6 +252,10 @@ function StockEntryPage() {
           <QuickEntryBar
             items={items}
             existingQtys={(id) => entries.filter((e) => e.itemId === id).map((e) => e.qty)}
+            positions={(id) => ({
+              at: entries.flatMap((e, i) => (e.itemId === id ? [i + 1] : [])),
+              total: entries.length,
+            })}
             qtyLabel="Computer qty"
             onAdd={(item, qty) => {
               setLastAdded(actions.addEntry(item.id, qty));

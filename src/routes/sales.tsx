@@ -126,6 +126,10 @@ function SalesPage() {
           qtyLabel="Sold qty"
           saveLabel="Add sale"
           existingQtys={(id) => sales.filter((x) => x.itemId === id).map((x) => x.qty)}
+          positions={(id) => ({
+            at: sales.flatMap((x, i) => (x.itemId === id ? [i + 1] : [])),
+            total: sales.length,
+          })}
           onAdd={addSale}
         />
       </div>
