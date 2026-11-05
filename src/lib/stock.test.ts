@@ -64,8 +64,8 @@ describe("stock reconciliation", () => {
     expect(r.diff).toBe(2);
   });
 
-  it("item with no computer qty entered stays pending and out of totals", () => {
-    const rows = reconcileAll([item({ computer: null })], []);
+  it("item not yet counted (no in-hand qty) stays pending and out of totals", () => {
+    const rows = reconcileAll([item({ inHand: null })], []);
     expect(rows[0]?.status).toBe("pending");
     expect(summarize(rows, []).shortValue).toBe(0);
   });

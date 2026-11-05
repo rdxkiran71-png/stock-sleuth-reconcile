@@ -30,24 +30,24 @@ export function ItemDialog({
   useEffect(() => {
     if (open) {
       setDescription(item?.description ?? "");
-      setInHand(item ? String(item.inHand) : "");
+      setInHand(item?.inHand != null ? String(item.inHand) : "");
       setRate(item ? String(item.rate) : "");
-      setComputer(item?.computer != null ? String(item.computer) : "");
+      setComputer(item ? String(item.computer) : "");
     }
   }, [open, item]);
 
   const save = () => {
     const d = description.trim().toUpperCase();
-    const h = Number(inHand);
+    const c = Number(computer);
     const r = Number(rate);
     if (!d) { toast.error("Please enter the item description."); return; }
-    if (!Number.isFinite(h) || h < 0) { toast.error("In-hand quantity must be 0 or more."); return; }
+    if (!Number.isFinite(c) || c < 0) { toast.error("Computer quantity must be 0 or more."); return; }
     if (!Number.isFinite(r) || r < 0) { toast.error("Rate must be 0 or more."); return; }
-    const c = computer.trim() === "" ? null : Number(computer);
-    if (c !== null && (!Number.isFinite(c) || c < 0))
-      { toast.error("Computer quantity must be 0 or more."); return; }
+    const h = inHand.trim() === "" ? null : Number(inHand);
+    if (h !== null && (!Number.isInteger(h) || h < 0))
+      { toast.error("In-hand quantity must be 0 or more."); return; }
     if (item) {
-      actions.updateItem(item.id, { description: d, inHand: h, rate: r });
+      actions.updateItem(item.id, { description: d, computer: c, rate: r });
       toast.success("Item updated");
     } else {
       actions.addItem({ description: d, inHand: h, rate: r, computer: c });
@@ -75,13 +75,13 @@ export function ItemDialog({
           </div>
           <div className="grid grid-cols-3 gap-3">
             <div className="grid gap-1.5">
-              <Label htmlFor="inhand">In hand qty</Label>
-              <Input id="inhand" type="number" min={0} value={inHand} onChange={(e) => setInHand(e.target.value)} />
+              <Label htmlFor="comp">Computer qty</Label>
+              <Input id="comp" type="number" min={0} value={computer} onChange={(e) => setComputer(e.target.value)} />
             </div>
             {!item && (
               <div className="grid gap-1.5">
-                <Label htmlFor="comp">Computer qty</Label>
-                <Input id="comp" type="number" min={0} value={computer} onChange={(e) => setComputer(e.target.value)} placeholder="—" />
+                <Label htmlFor="inhand">In hand qty</Label>
+                <Input id="inhand" type="number" min={0} value={inHand} onChange={(e) => setInHand(e.target.value)} placeholder="—" />
               </div>
             )}
             <div className="grid gap-1.5">

@@ -207,7 +207,7 @@ export const QuickEntryBar = forwardRef<QuickEntryBarHandle, Props>(function Qui
                             Added ×{n}
                           </span>
                         )}
-                        <span className="num text-xs opacity-60">{r.inHand} in hand</span>
+                        <span className="num text-xs opacity-60">{fmtNum(r.computer)} in computer</span>
                       </button>
                     </li>
                   );
@@ -281,7 +281,7 @@ export const QuickEntryBar = forwardRef<QuickEntryBarHandle, Props>(function Qui
             <span className="font-medium text-short">{error}</span>
           ) : selected ? (
             <span className="num text-muted-foreground">
-              {selected.description} · In hand {fmtNum(selected.inHand)} · Rate {fmtNum(selected.rate)}
+              {selected.description} · Computer {fmtNum(selected.computer)} · Rate {fmtNum(selected.rate)}
             </span>
           ) : (
             <span className="text-muted-foreground">
