@@ -3,8 +3,10 @@ import seed from "@/data/westpoint-items.json";
 import { computerTotals, type ComputerEntry, type ReportMeta, type Sale, type StockItem } from "./stock";
 
 export interface AppState {
+  /** Data format version. v2: JSON list = computer stock, entries = physical in-hand count. */
+  v: number;
   items: StockItem[];
-  /** Bill-style computer stock lines; items[].computer is kept in sync as their total. */
+  /** Bill-style physical count lines; items[].inHand is kept in sync as their total. */
   entries: ComputerEntry[];
   sales: Sale[];
   meta: ReportMeta;
@@ -18,12 +20,14 @@ function today() {
 
 export function seedState(): AppState {
   return {
+    v: 2,
     items: (seed as { description: string; inHand: number; rate: number }[]).map((s, i) => ({
       id: `i${i + 1}`,
       description: s.description,
-      inHand: s.inHand,
+      // The JSON list is the computer stock; in-hand is counted by the user.
+      computer: s.inHand,
       rate: s.rate,
-      computer: null,
+      inHand: null,
     })),
     entries: [],
     sales: [],
@@ -31,32 +35,37 @@ export function seedState(): AppState {
   };
 }
 
-/** Keep items[].computer equal to the sum of entry lines (null when an item has none). */
-function syncComputer(s: AppState): AppState {
+/** Keep items[].inHand equal to the sum of count entry lines (null when an item has none). */
+function syncInHand(s: AppState): AppState {
   const totals = computerTotals(s.entries);
   return {
     ...s,
     items: s.items.map((i) => {
-      const c = totals.has(i.id) ? totals.get(i.id)! : null;
-      return i.computer === c ? i : { ...i, computer: c };
+      const h = totals.has(i.id) ? totals.get(i.id)! : null;
+      return i.inHand === h ? i : { ...i, inHand: h };
     }),
   };
 }
 
-/** Accept saved/backup data, including older versions that stored computer qty directly. */
+/** Accept saved/backup data, including v1 where the JSON list was inHand and entries were computer qty. */
 function normalize(parsed: Partial<AppState>): AppState {
   const base = seedState();
   // Non-Westpoint heater items removed from the list; drop them from saved data too.
   const REMOVED = /^(8822|8833|8844|8877) .*HEATER/i;
-  const items = (parsed.items ?? base.items).filter((i) => !REMOVED.test(i.description));
-  let entries = parsed.entries;
-  if (!Array.isArray(entries)) {
-    const at = new Date().toISOString();
-    entries = items
-      .filter((i) => i.computer !== null && i.computer !== undefined)
-      .map((i) => ({ id: uid(), itemId: i.id, qty: i.computer as number, at }));
+  let items = (parsed.items ?? base.items).filter((i) => !REMOVED.test(i.description));
+  let entries = Array.isArray(parsed.entries) ? parsed.entries : [];
+  if (parsed.v !== 2) {
+    // v1: item.inHand held the JSON (computer) qty; entries (or item.computer) held the count.
+    if (!Array.isArray(parsed.entries)) {
+      const at = new Date().toISOString();
+      entries = items
+        .filter((i) => i.computer !== null && i.computer !== undefined)
+        .map((i) => ({ id: uid(), itemId: i.id, qty: i.computer as number, at }));
+    }
+    items = items.map((i) => ({ ...i, computer: i.inHand ?? 0, inHand: null }));
   }
-  return syncComputer({
+  return syncInHand({
+    v: 2,
     items,
     entries,
     sales: parsed.sales ?? [],
@@ -98,7 +107,7 @@ function setState(next: AppState) {
 }
 
 function update(fn: (s: AppState) => AppState) {
-  setState(syncComputer(fn(load())));
+  setState(syncInHand(fn(load())));
 }
 
 const subscribe = (l: () => void) => {
@@ -136,11 +145,11 @@ export const actions = {
     const id = uid();
     update((s) => ({
       ...s,
-      items: [...s.items, { ...item, id, computer: null }],
+      items: [...s.items, { ...item, id, inHand: null }],
       entries:
-        item.computer === null
+        item.inHand === null
           ? s.entries
-          : [...s.entries, { id: uid(), itemId: id, qty: item.computer, at: new Date().toISOString() }],
+          : [...s.entries, { id: uid(), itemId: id, qty: item.inHand, at: new Date().toISOString() }],
     }));
   },
   deleteItem(id: string) {
@@ -151,13 +160,13 @@ export const actions = {
       sales: s.sales.filter((x) => x.itemId !== id),
     }));
   },
-  fillPendingWithInHand() {
+  fillPendingWithComputer() {
     const at = new Date().toISOString();
     update((s) => ({
       ...s,
       entries: [
         ...s.entries,
-        ...s.items.filter((i) => i.computer === null).map((i) => ({ id: uid(), itemId: i.id, qty: i.inHand, at })),
+        ...s.items.filter((i) => i.inHand === null).map((i) => ({ id: uid(), itemId: i.id, qty: i.computer, at })),
       ],
     }));
   },

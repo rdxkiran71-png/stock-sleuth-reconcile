@@ -1,12 +1,12 @@
 export interface StockItem {
   id: string;
   description: string;
-  /** Physically counted quantity (what we have in hand). */
-  inHand: number;
+  /** Physically counted quantity (what we have in hand). null = not counted yet. */
+  inHand: number | null;
   /** Cost rate per unit. */
   rate: number;
-  /** Quantity showing in the computer system. null = not entered yet. */
-  computer: number | null;
+  /** Quantity showing in the computer system (from the item list). */
+  computer: number;
 }
 
 export interface Sale {
@@ -20,7 +20,7 @@ export interface Sale {
   note?: string;
 }
 
-/** One line of computer stock entry (like a bill line). Same item can have many lines. */
+/** One line of physical (in-hand) stock count (like a bill line). Same item can have many lines. */
 export interface ComputerEntry {
   id: string;
   itemId: string;
@@ -34,7 +34,7 @@ export function itemCode(description: string): string {
   return description.trim().split(/\s+/)[0] ?? "";
 }
 
-/** Total computer qty per item from entry lines. Items with no lines are absent. */
+/** Total counted (in-hand) qty per item from entry lines. Items with no lines are absent. */
 export function computerTotals(entries: ComputerEntry[]): Map<string, number> {
   const m = new Map<string, number>();
   for (const e of entries) m.set(e.itemId, (m.get(e.itemId) ?? 0) + e.qty);
@@ -82,7 +82,7 @@ export function soldByItem(sales: Sale[]): Map<string, number> {
 }
 
 export function reconcileItem(item: StockItem, sold: number): ReconciledItem {
-  if (item.computer === null) {
+  if (item.inHand === null) {
     return { ...item, sold, computerAfterSales: null, diff: 0, diffValue: 0, status: "pending" };
   }
   const computerAfterSales = item.computer - sold;
@@ -103,11 +103,15 @@ export interface Summary {
   matchedItems: number;
   shortItems: number;
   excessItems: number;
+  /** Totals of counted (non-pending) items only. */
   inHandQty: number;
   inHandValue: number;
-  /** Totals of entered (non-pending) items only. */
+  /** Computer stock totals of ALL items (the computer list is always known). */
   computerQty: number;
   computerValue: number;
+  /** Computer stock of counted (non-pending) items only. */
+  enteredComputerQty: number;
+  enteredComputerValue: number;
   soldQty: number;
   soldCostValue: number;
   soldSaleValue: number;
@@ -134,6 +138,8 @@ export function summarize(rows: ReconciledItem[], sales: Sale[]): Summary {
     inHandValue: 0,
     computerQty: 0,
     computerValue: 0,
+    enteredComputerQty: 0,
+    enteredComputerValue: 0,
     soldQty: 0,
     soldCostValue: 0,
     soldSaleValue: 0,
@@ -148,16 +154,18 @@ export function summarize(rows: ReconciledItem[], sales: Sale[]): Summary {
   };
   const rateById = new Map(rows.map((r) => [r.id, r.rate]));
   for (const r of rows) {
-    s.inHandQty += r.inHand;
-    s.inHandValue += r.inHand * r.rate;
+    s.computerQty += r.computer;
+    s.computerValue += r.computer * r.rate;
     if (r.status === "pending") {
       s.pendingItems++;
       continue;
     }
     s.enteredItems++;
-    const c = r.computer ?? 0;
-    s.computerQty += c;
-    s.computerValue += c * r.rate;
+    const h = r.inHand ?? 0;
+    s.inHandQty += h;
+    s.inHandValue += h * r.rate;
+    s.enteredComputerQty += r.computer;
+    s.enteredComputerValue += r.computer * r.rate;
     const after = r.computerAfterSales ?? 0;
     s.computerAfterSalesQty += after;
     s.computerAfterSalesValue += after * r.rate;
