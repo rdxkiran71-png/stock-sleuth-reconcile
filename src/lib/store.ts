@@ -46,7 +46,9 @@ function syncComputer(s: AppState): AppState {
 /** Accept saved/backup data, including older versions that stored computer qty directly. */
 function normalize(parsed: Partial<AppState>): AppState {
   const base = seedState();
-  const items = parsed.items ?? base.items;
+  // Non-Westpoint heater items removed from the list; drop them from saved data too.
+  const REMOVED = /^(8822|8833|8844|8877) .*HEATER/i;
+  const items = (parsed.items ?? base.items).filter((i) => !REMOVED.test(i.description));
   let entries = parsed.entries;
   if (!Array.isArray(entries)) {
     const at = new Date().toISOString();

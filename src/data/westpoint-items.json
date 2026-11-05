@@ -1550,11 +1550,6 @@
 "rate": 35500
 },
 {
-"description": "8822 SUN HEATER (NET RATE)",
-"inHand": 25,
-"rate": 1150
-},
-{
 "description": "8823 JUICER (3*1)",
 "inHand": 0,
 "rate": 12250
@@ -1563,21 +1558,6 @@
 "description": "8824 JUICER (4*1)",
 "inHand": 3,
 "rate": 13600
-},
-{
-"description": "8833 FISH HEATER (NET RATE)",
-"inHand": 119,
-"rate": 760
-},
-{
-"description": "8844 BOX WITH STAND HEATER (NET RATE)",
-"inHand": 0,
-"rate": 940
-},
-{
-"description": "8877 BOX HEATER (NET RATE)",
-"inHand": 26,
-"rate": 870
 },
 {
 "description": "90B IRON",
