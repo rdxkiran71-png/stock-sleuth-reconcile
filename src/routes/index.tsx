@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { memo, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
-import { CopyCheck, Download, Pencil, Plus, RotateCcw, Search, Upload } from "lucide-react";
+import { CopyCheck, Download, Pencil, Plus, RotateCcw, Save, Search, Upload } from "lucide-react";
 import { AppShell, StatCard } from "@/components/AppShell";
 import { StatusBadge } from "@/components/StatusBadge";
 import { ItemDialog } from "@/components/ItemDialog";
@@ -184,6 +184,17 @@ function StockEntryPage() {
             }}
           >
             <CopyCheck /> Fill pending = in hand
+          </Button>
+          <Button
+            size="sm"
+            onClick={() => {
+              exportBackup();
+              toast.success(
+                `Entries saved! ${entries.length} lines browser mein save hain aur backup file bhi download ho gayi. Agli dafa app kholne par yahin se start hogi.`,
+              );
+            }}
+          >
+            <Save /> Save entries
           </Button>
           <Button variant="outline" size="sm" onClick={exportBackup}>
             <Download /> Backup
