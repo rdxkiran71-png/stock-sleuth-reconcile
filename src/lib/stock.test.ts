@@ -5,12 +5,27 @@ import {
   summarize,
   computerTotals,
   groupLinesByItem,
+  repeatedCounts,
   itemCode,
   type StockItem,
   type Sale,
 } from "./stock";
 
 describe("bill-style computer entries", () => {
+  it("reports items counted twice, three times and more with every quantity and original position", () => {
+    const entries = ["a", "b", "a", "c", "b", "b", "d", "d", "d", "d"].map((itemId, index) => ({
+      id: String(index), itemId, qty: index + 1, at: "",
+    }));
+    const repeats = repeatedCounts(entries);
+    expect(repeats.map(({ itemId, count, total }) => ({ itemId, count, total }))).toEqual([
+      { itemId: "a", count: 2, total: 4 },
+      { itemId: "b", count: 3, total: 13 },
+      { itemId: "d", count: 4, total: 34 },
+    ]);
+    expect(repeats[1]?.lines.map(({ position, qty }) => [position, qty])).toEqual([[2, 2], [5, 5], [6, 6]]);
+    expect(repeatedCounts(entries.filter((entry) => entry.itemId === "c"))).toEqual([]);
+  });
+
   it("adds up every entry line of the same item", () => {
     const t = computerTotals([
       { id: "1", itemId: "a", qty: 20, at: "" },

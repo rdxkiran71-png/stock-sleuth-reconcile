@@ -28,7 +28,7 @@ export const Route = createFileRoute("/")({
       { title: "Stock Entry — Westpoint Stock Audit" },
       {
         name: "description",
-        content: "Enter computer stock against physically counted stock and see shortages and excess instantly.",
+        content: "Enter physical in-hand counts against the JSON computer stock list and see shortages and excess instantly.",
       },
       { property: "og:title", content: "Stock Entry — Westpoint Stock Audit" },
       {
@@ -69,12 +69,14 @@ const Row = memo(function Row({
       <td className="num px-2 py-1.5 text-xs text-muted-foreground">{serial}</td>
       <td className="px-2 py-1.5 font-medium">{r.description}</td>
       <td className="num px-2 py-1.5 text-right text-muted-foreground">{fmtNum(r.rate)}</td>
-      <td className="num px-2 py-1.5 text-right font-semibold">{fmtNum(r.inHand)}</td>
       <td className="num px-2 py-1.5 text-right font-semibold">
-        {r.computer === null ? <span className="text-muted-foreground">—</span> : fmtNum(r.computer)}
+        {r.inHand === null ? "—" : fmtNum(r.inHand)}
         {lines > 1 && (
           <span className="ml-1 rounded bg-pending-soft px-1 text-[10px] font-semibold text-pending">×{lines}</span>
         )}
+      </td>
+      <td className="num px-2 py-1.5 text-right font-semibold">
+        {r.computer === null ? <span className="text-muted-foreground">—</span> : fmtNum(r.computer)}
       </td>
       <td className="num px-2 py-1.5 text-right text-muted-foreground">{r.sold ? fmtNum(r.sold) : ""}</td>
       <td
@@ -152,7 +154,7 @@ function StockEntryPage() {
         <div>
           <h1 className="text-3xl font-semibold">Stock entry</h1>
           <p className="mt-1 max-w-2xl text-sm text-muted-foreground">
-            Enter the stock showing in the <strong>computer</strong> like a bill: type the item code, press Enter,
+            Enter the physically counted <strong>in-hand stock</strong> like a bill: type the item code, press Enter,
             type the qty, press Enter, then Enter again to save. If an item is entered twice, its lines are added
             together.
           </p>
@@ -175,15 +177,15 @@ function StockEntryPage() {
             onClick={() => {
               if (
                 confirm(
-                  `Set computer qty = in-hand qty for all ${counts.pending} pending items? Only do this if those items match in the computer.`,
+                  `Set in-hand qty = computer qty for all ${counts.pending} pending items? Only do this if you have physically checked that they match.`,
                 )
               ) {
-                actions.fillPendingWithInHand();
+                actions.fillPendingWithComputer();
                 toast.success("Pending items filled");
               }
             }}
           >
-            <CopyCheck /> Fill pending = in hand
+            <CopyCheck /> Fill pending = computer
           </Button>
           <Button
             size="sm"
@@ -207,7 +209,7 @@ function StockEntryPage() {
             size="sm"
             className="text-destructive"
             onClick={() => {
-              if (!confirm("Reset everything back to the original list? All computer entries and sales will be cleared.")) return;
+                  if (!confirm("Reset everything back to the original list? All in-hand entries and sales will be cleared.")) return;
               if (!confirm("Pakka sure hain? Reset ke baad sab entries aur sales hamesha ke liye delete ho jayengi.")) return;
               actions.resetAll();
               toast.success("Reset to original list");
@@ -243,7 +245,7 @@ function StockEntryPage() {
         <StatCard
           label="Computer value"
           value={fmtRs(s.computerValue)}
-          sub={`${fmtNum(s.computerQty)} pcs · ${s.enteredItems} items entered`}
+           sub={`${fmtNum(s.computerQty)} pcs · JSON stock list`}
         />
         <StatCard label="Shortage (loss)" tone="short" value={fmtRs(s.shortValue)} sub={`${fmtNum(s.shortQty)} pcs · ${s.shortItems} items`} />
         <StatCard label="Excess in hand" tone="excess" value={fmtRs(s.excessValue)} sub={`${fmtNum(s.excessQty)} pcs · ${s.excessItems} items`} />
@@ -258,7 +260,7 @@ function StockEntryPage() {
       <div className="mb-6 rounded-lg border-2 border-primary/30 bg-card shadow-card">
         <div className="border-b border-border p-4">
           <div className="mb-3 flex items-baseline justify-between gap-2">
-            <h2 className="text-lg font-semibold">Computer stock entry</h2>
+            <h2 className="text-lg font-semibold">In-hand stock entry</h2>
             <span className="num text-xs text-muted-foreground">
               {entries.length} lines · {lineCount.size} items · {fmtNum(entries.reduce((a, e) => a + e.qty, 0))} pcs
             </span>
@@ -270,7 +272,7 @@ function StockEntryPage() {
               at: entries.flatMap((e, i) => (e.itemId === id ? [i + 1] : [])),
               total: entries.length,
             })}
-            qtyLabel="Computer qty"
+            qtyLabel="In-hand qty"
             onAdd={(item, qty) => {
               setLastAdded(actions.addEntry(item.id, qty));
               toast.success(`${itemCode(item.description)} · ${qty} pcs saved`, { duration: 1200 });

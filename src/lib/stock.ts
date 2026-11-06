@@ -55,6 +55,19 @@ export function groupLinesByItem<T extends { itemId: string }>(lines: T[]): T[][
   return [...groups.values()];
 }
 
+/** Repeated physical counts, retaining original entry positions for the report. */
+export function repeatedCounts(entries: ComputerEntry[]) {
+  const positioned = entries.map((entry, index) => ({ ...entry, position: index + 1 }));
+  return groupLinesByItem(positioned)
+    .filter((lines) => lines.length > 1)
+    .map((lines) => ({
+      itemId: lines[0]?.itemId ?? "",
+      count: lines.length,
+      total: lines.reduce((total, line) => total + line.qty, 0),
+      lines,
+    }));
+}
+
 export interface ReportMeta {
   storeName: string;
   countDate: string;

@@ -38,7 +38,7 @@ export function AppShell({ children }: { children: ReactNode }) {
             ))}
           </nav>
           <div className="ml-auto flex items-center gap-3 text-xs">
-            <span className="opacity-70">Computer entry</span>
+            <span className="opacity-70">In-hand count</span>
             <div className="h-1.5 w-32 overflow-hidden rounded-full bg-ink-foreground/15">
               <div className="h-full bg-accent transition-all" style={{ width: `${pct}%` }} />
             </div>
