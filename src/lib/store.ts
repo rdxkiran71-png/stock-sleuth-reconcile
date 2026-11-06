@@ -1,6 +1,7 @@
 import { useSyncExternalStore } from "react";
 import seed from "@/data/westpoint-items.json";
 import { computerTotals, type ComputerEntry, type ReportMeta, type Sale, type StockItem } from "./stock";
+import { auditChannelName, loadAudit, saveAuditSnapshot } from "./audits";
 
 export interface AppState {
   /** Data format version. v2: JSON list = computer stock, entries = physical in-hand count. */
@@ -10,6 +11,11 @@ export interface AppState {
   entries: ComputerEntry[];
   sales: Sale[];
   meta: ReportMeta;
+  /** Online audit folder this state belongs to (null = not saved on the website yet). */
+  auditId: string | null;
+  auditName: string | null;
+  /** Last cloud sync error message, if any. */
+  syncError: string | null;
 }
 
 const STORAGE_KEY = "westpoint-stock-audit-v1";
@@ -32,6 +38,9 @@ export function seedState(): AppState {
     entries: [],
     sales: [],
     meta: { storeName: "Westpoint", countDate: today(), preparedBy: "", checkedBy: "" },
+    auditId: null,
+    auditName: null,
+    syncError: null,
   };
 }
 
@@ -70,6 +79,9 @@ function normalize(parsed: Partial<AppState>): AppState {
     entries,
     sales: parsed.sales ?? [],
     meta: { ...base.meta, ...parsed.meta },
+    auditId: parsed.auditId ?? null,
+    auditName: parsed.auditName ?? null,
+    syncError: null,
   });
 }
 
@@ -86,6 +98,12 @@ function load(): AppState {
       const parsed = JSON.parse(raw) as AppState;
       if (Array.isArray(parsed.items) && Array.isArray(parsed.sales)) {
         state = normalize(parsed);
+        // Resume the online audit this device was working on.
+        if (state.auditId && typeof window !== "undefined") {
+          const id = state.auditId;
+          void watchAudit(id);
+          void pullFromCloud(id);
+        }
         return state;
       }
     }
@@ -104,6 +122,106 @@ function setState(next: AppState) {
     /* storage full */
   }
   listeners.forEach((l) => l());
+  scheduleCloudSync(next);
+}
+
+// ---- Online audit sync (Lovable Cloud) ----
+// Entries/sales/meta are mirrored to the open audit folder so anyone with the
+// link sees the same data. Sync is debounced and failures only set syncError.
+
+let syncTimer: ReturnType<typeof setTimeout> | null = null;
+let syncing = false;
+let syncAgain = false;
+let applyingRemote = false;
+
+function scheduleCloudSync(s: AppState) {
+  if (!s.auditId || applyingRemote || typeof window === "undefined") return;
+  if (syncTimer) clearTimeout(syncTimer);
+  syncTimer = setTimeout(() => void pushToCloud(), 800);
+}
+
+async function pushToCloud() {
+  const s = load();
+  if (!s.auditId || syncing) {
+    if (s.auditId && syncing) syncAgain = true;
+    return;
+  }
+  syncing = true;
+  try {
+    await saveAuditSnapshot(s.auditId, s.meta, s.entries, s.sales);
+    if (state && state.syncError) {
+      state = { ...state, syncError: null };
+      listeners.forEach((l) => l());
+    }
+    broadcastChange(s.auditId);
+  } catch (err) {
+    if (state) {
+      state = { ...state, syncError: err instanceof Error ? err.message : "sync failed" };
+      listeners.forEach((l) => l());
+    }
+  } finally {
+    syncing = false;
+    if (syncAgain) {
+      syncAgain = false;
+      void pushToCloud();
+    }
+  }
+}
+
+function broadcastChange(auditId: string) {
+  try {
+    if (channel && channelAuditId === auditId) {
+      void channel.send({ type: "broadcast", event: "changed", payload: {} });
+    }
+  } catch {
+    /* realtime optional */
+  }
+}
+
+// Lazy realtime channel so other tabs/devices reload when this audit changes.
+type Channel = { send: (m: unknown) => Promise<unknown>; unsubscribe: () => Promise<unknown> };
+let channel: Channel | null = null;
+let channelAuditId: string | null = null;
+
+async function watchAudit(auditId: string) {
+  if (channelAuditId === auditId) return;
+  if (channel) await channel.unsubscribe();
+  channelAuditId = auditId;
+  const { supabase } = await import("@/integrations/supabase/client");
+  const ch = supabase.channel(auditChannelName(auditId));
+  ch.on("broadcast", { event: "changed" }, () => void pullFromCloud(auditId));
+  await ch.subscribe();
+  channel = ch as unknown as Channel;
+}
+
+async function pullFromCloud(auditId: string) {
+  try {
+    const snap = await loadAudit(auditId);
+    const s = load();
+    if (s.auditId !== auditId) return;
+    applyingRemote = true;
+    try {
+      setState(
+        syncInHand({
+          ...s,
+          entries: snap.entries,
+          sales: snap.sales,
+          meta: {
+            storeName: snap.folder.storeName,
+            countDate: snap.folder.countDate,
+            preparedBy: snap.folder.preparedBy,
+            checkedBy: snap.folder.checkedBy,
+          },
+          auditName: snap.folder.name,
+          syncError: null,
+        }),
+      );
+    } finally {
+      applyingRemote = false;
+    }
+  } catch {
+    /* keep local data */
+  }
 }
 
 function update(fn: (s: AppState) => AppState) {
@@ -184,6 +302,39 @@ export const actions = {
   },
   setMeta(patch: Partial<ReportMeta>) {
     update((s) => ({ ...s, meta: { ...s.meta, ...patch } }));
+  },
+  /** Point the app at an online audit folder (or clear it with null). */
+  setAudit(id: string | null, name: string | null) {
+    update((s) => ({ ...s, auditId: id, auditName: name }));
+    if (id) void watchAudit(id);
+  },
+  /** Replace local entries/sales/meta with the audit folder saved on the website. */
+  async openAudit(id: string) {
+    const snap = await loadAudit(id);
+    setState(
+      syncInHand({
+        ...load(),
+        entries: snap.entries,
+        sales: snap.sales,
+        meta: {
+          storeName: snap.folder.storeName,
+          countDate: snap.folder.countDate,
+          preparedBy: snap.folder.preparedBy,
+          checkedBy: snap.folder.checkedBy,
+        },
+        auditId: id,
+        auditName: snap.folder.name,
+        syncError: null,
+      }),
+    );
+    void watchAudit(id);
+  },
+  /** Force an immediate save of the current state to the open audit folder. */
+  async saveToCloud() {
+    const s = load();
+    if (!s.auditId) return;
+    await saveAuditSnapshot(s.auditId, s.meta, s.entries, s.sales);
+    broadcastChange(s.auditId);
   },
   replaceAll(next: AppState) {
     setState(normalize(next));

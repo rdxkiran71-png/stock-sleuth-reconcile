@@ -3,6 +3,7 @@ import { ClipboardList, FileText, ShoppingCart } from "lucide-react";
 import type { ReactNode } from "react";
 import { useAppState } from "@/lib/store";
 import { reconcileAll, summarize } from "@/lib/stock";
+import { AuditBar } from "@/components/AuditBar";
 
 const nav = [
   { to: "/", label: "Stock Entry", icon: ClipboardList },
@@ -38,6 +39,7 @@ export function AppShell({ children }: { children: ReactNode }) {
             ))}
           </nav>
           <div className="ml-auto flex items-center gap-3 text-xs">
+            <AuditBar />
             <span className="opacity-70">In-hand count</span>
             <div className="h-1.5 w-32 overflow-hidden rounded-full bg-ink-foreground/15">
               <div className="h-full bg-accent transition-all" style={{ width: `${pct}%` }} />

@@ -72,7 +72,14 @@ const Row = memo(function Row({
       <td className="num px-2 py-1.5 text-right font-semibold">
         {r.inHand === null ? "—" : fmtNum(r.inHand)}
         {lines > 1 && (
-          <span className="ml-1 rounded bg-pending-soft px-1 text-[10px] font-semibold text-pending">×{lines}</span>
+          <span
+            title={`Yeh item ${lines} dafa add hua hai`}
+            className={`ml-1 rounded px-1 text-[10px] font-semibold ${
+              lines >= 3 ? "bg-short-soft text-short" : "bg-pending-soft text-pending"
+            }`}
+          >
+            ×{lines}
+          </span>
         )}
       </td>
       <td className="num px-2 py-1.5 text-right font-semibold">

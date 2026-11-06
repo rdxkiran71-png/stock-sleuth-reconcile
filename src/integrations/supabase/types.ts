@@ -14,7 +14,109 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      audit_entries: {
+        Row: {
+          at: string
+          audit_id: string
+          id: string
+          item_id: string
+          position: number
+          qty: number
+        }
+        Insert: {
+          at?: string
+          audit_id: string
+          id?: string
+          item_id: string
+          position?: number
+          qty: number
+        }
+        Update: {
+          at?: string
+          audit_id?: string
+          id?: string
+          item_id?: string
+          position?: number
+          qty?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "audit_entries_audit_id_fkey"
+            columns: ["audit_id"]
+            isOneToOne: false
+            referencedRelation: "audits"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      audit_sales: {
+        Row: {
+          at: string
+          audit_id: string
+          id: string
+          item_id: string
+          qty: number
+          sale_rate: number
+        }
+        Insert: {
+          at?: string
+          audit_id: string
+          id?: string
+          item_id: string
+          qty: number
+          sale_rate?: number
+        }
+        Update: {
+          at?: string
+          audit_id?: string
+          id?: string
+          item_id?: string
+          qty?: number
+          sale_rate?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "audit_sales_audit_id_fkey"
+            columns: ["audit_id"]
+            isOneToOne: false
+            referencedRelation: "audits"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      audits: {
+        Row: {
+          checked_by: string
+          count_date: string
+          created_at: string
+          id: string
+          name: string
+          prepared_by: string
+          store_name: string
+          updated_at: string
+        }
+        Insert: {
+          checked_by?: string
+          count_date?: string
+          created_at?: string
+          id?: string
+          name: string
+          prepared_by?: string
+          store_name?: string
+          updated_at?: string
+        }
+        Update: {
+          checked_by?: string
+          count_date?: string
+          created_at?: string
+          id?: string
+          name?: string
+          prepared_by?: string
+          store_name?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

@@ -44,6 +44,8 @@ const R = "text-right num";
 function ReportPage() {
   const { items, sales, meta, entries } = useAppState();
   const repeats = useMemo(() => repeatedCounts(entries), [entries]);
+  const twice = useMemo(() => repeats.filter((g) => g.count === 2), [repeats]);
+  const thrice = useMemo(() => repeats.filter((g) => g.count >= 3), [repeats]);
   const rows = useMemo(() => reconcileAll(items, sales), [items, sales]);
   const s = useMemo(() => summarize(rows, sales), [rows, sales]);
   const [showFull, setShowFull] = useState(false);
@@ -414,7 +416,21 @@ function ReportPage() {
             </Section>
           )}
 
-          <Section title={`7. Repeated in-hand entries (${repeats.length} items)`} sub="Each original count line is listed below; quantities are added, not discarded.">
+          <Section title={`7. Repeated in-hand entries (${repeats.length} items)`} sub="Items counted 2 or 3+ times are highlighted — check them first. Each original count line is listed below; quantities are added, not discarded.">
+            {repeats.length > 0 && (
+              <div className="mb-3 grid grid-cols-2 gap-2">
+                <div className="rounded border border-input bg-pending-soft p-2">
+                  <div className="text-[7pt] uppercase tracking-wider opacity-80">Counted 2 times</div>
+                  <div className="num text-[12pt] font-bold">{twice.length} items</div>
+                  <div className="text-[7.5pt] opacity-80">{twice.map((g) => byId.get(g.itemId)?.description ?? "Deleted item").join(" · ") || "—"}</div>
+                </div>
+                <div className="rounded border border-input bg-short-soft p-2 text-short">
+                  <div className="text-[7pt] uppercase tracking-wider opacity-80">Counted 3+ times</div>
+                  <div className="num text-[12pt] font-bold">{thrice.length} items</div>
+                  <div className="text-[7.5pt] opacity-80">{thrice.map((g) => byId.get(g.itemId)?.description ?? "Deleted item").join(" · ") || "—"}</div>
+                </div>
+              </div>
+            )}
             <table className="report-table">
               <thead>
                 <tr>
@@ -428,8 +444,15 @@ function ReportPage() {
               </thead>
               <tbody>
                 {repeats.flatMap((group) => group.lines.map((line, index) => (
-                  <tr key={line.id}>
-                    <td>{byId.get(group.itemId)?.description ?? "Deleted item"}</td>
+                  <tr key={line.id} className={group.count >= 3 ? "bg-short-soft" : "bg-pending-soft"}>
+                    <td className="font-medium">
+                      {byId.get(group.itemId)?.description ?? "Deleted item"}
+                      {index === 0 && (
+                        <span className={`ml-1 rounded px-1 text-[7pt] font-bold ${group.count >= 3 ? "bg-short text-white" : "bg-pending/20 text-pending"}`}>
+                          ×{group.count}
+                        </span>
+                      )}
+                    </td>
                     <td className={R}>{group.count}</td>
                     <td className={R}>#{line.position}</td>
                     <td className={R}>{index + 1} / {group.count}</td>
